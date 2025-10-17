@@ -39,12 +39,21 @@ class GameOfNim(Game):
     
 
     def utility(self, state, player):
-        """Return 1 if 'player' has won, -1 if 'player' has lost, 0 otherwise."""
+        """Return +1 if 'player' won, -1 if 'player' lost, 0 otherwise."""
         if self.terminal_test(state):
-            # If the game ended and it's MAX's turn, MIN made the last move (so MIN won)
-            return -1 if state.to_move == 'MIN' else 1
+            # Determine who made the last move
+            if state.to_move == 'MIN':
+                last_player = 'MIN'
+            else:
+                last_player = 'MAX'
+
+            if player == last_player:
+                return 1   # player made the last move won
+            else:
+                return -1  # player didn’t make last move lost
         else:
             return 0
+
 
     
 
