@@ -42,7 +42,7 @@ class GameOfNim(Game):
         """Return 1 if 'player' has won, -1 if 'player' has lost, 0 otherwise."""
         if self.terminal_test(state):
             # If the game ended and it's MAX's turn, MIN made the last move (so MIN won)
-            return -1 if state.to_move == 'MAX' else 1
+            return -1 if state.to_move == 'MIN' else 1
         else:
             return 0
 
